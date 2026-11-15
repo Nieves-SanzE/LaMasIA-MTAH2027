@@ -1,0 +1,3 @@
+# Entorno de idsse_cache.py (XML de la DFL -> npz). Python 3.11.
+lxml==6.1.3
+numpy==2.4.6

@@ -1,0 +1,4 @@
+# Entorno de la red temporal (E5 / exp-139). Solo CPU. Versión de torch elegida por Nieves el 14/11/2026.
+torch==2.14.1+cpu
+numpy==2.5.4
+scikit-learn==1.9.1

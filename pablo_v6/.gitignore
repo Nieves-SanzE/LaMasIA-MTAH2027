@@ -1,0 +1,131 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Datos del partido y cualquier derivado
+#
+# Las condiciones del reto prohíben redistribuir los datos y publicar derivados
+# que permitan reconstruirlos (exports de tracking, vídeo recortado, frames).
+# El repo de entrega es PÚBLICO: nada de esto puede escaparse.
+# ─────────────────────────────────────────────────────────────────────────────
+raw/
+docs/
+data/
+out/*
+# La carpeta se versiona (el codigo escribe ahi y la espera existiendo),
+# su contenido no: son derivados del partido.
+!out/.gitkeep
+
+
+# Vídeo e imagen, estén donde estén.
+# Para una figura que SÍ deba ir al repo (documento técnico): git add -f <fichero>
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+
+# Formatos binarios donde suelen acabar features y tracking intermedios.
+# Si alguno hace falta en el repo: git add -f <fichero>
+*.npy
+*.npz
+*.parquet
+*.feather
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.joblib
+*.pt
+*.pth
+*.onnx
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+.installed.cfg
+MANIFEST
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# Cachés de herramientas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.dmypy.json
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Jupyter
+#
+# .ipynb_checkpoints copia ENTERO cualquier fichero que abras en el editor de
+# JupyterLab, no solo notebooks: un .txt de tracking de 142 MB incluido.
+# ─────────────────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+.virtual_documents/
+.jupyter/
+.ipython/
+profile_default/
+ipython_config.py
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Editores y sistema operativo
+# ─────────────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*~
+.DS_Store
+.AppleDouble
+Thumbs.db
+desktop.ini
+.Trash-*
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Temporales, logs y secretos
+# ─────────────────────────────────────────────────────────────────────────────
+tmp/
+.tmp/
+*.tmp
+*.bak
+*.orig
+*.rej
+*.log
+logs/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json

@@ -1,0 +1,21 @@
+# Match data and anything derived from it: never in this repository
+data/
+*.csv
+*.mp4
+*.npy
+*.npz
+*.parquet
+*.pkl
+*.feather
+# ...except the network weights, trained only on the DFL open data
+!dfl/pesos_red/*.npz
+
+# Official repository, cloned during setup
+more-than-a-hack-2027/
+
+# Environments, caches and logs
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+*.log
