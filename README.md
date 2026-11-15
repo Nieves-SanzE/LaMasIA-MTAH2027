@@ -25,9 +25,14 @@ pablo_v6/          feature, dead-ball and decoder code used by dfl/ (see its REA
 
 ## Requirements
 
-- Git, [uv](https://docs.astral.sh/uv/) and a POSIX shell: Git Bash on Windows, or `sh` on Linux and macOS.
+- **Windows or Linux on x86-64.** macOS is not supported: the pinned PyTorch build (`2.14.1+cpu`) has no macOS
+  packages, and the scripts use `sha256sum`.
+- Git, [uv](https://docs.astral.sh/uv/) and a POSIX shell: Git Bash on Windows, `sh` on Linux. The scripts also use
+  `curl`, `xargs`, `tar` and `sha256sum`, which come with Git Bash and with any Linux distribution.
+- An internet connection, for the environments and the external data.
 - About 10 GB of free disk space. The DFL download is about 2.6 GB and SkillCorner about 1.7 GB.
-- A CPU is enough. It takes about 1 h 50 min on a laptop with 4 threads.
+- 16 GB of RAM: steps 7 and 8 compute 4 DFL matches at a time.
+- A CPU is enough, no GPU. It takes about 1 h 50 min on a laptop (Intel Core i7-1255U, 4 threads).
 
 ## Setup (once)
 
@@ -54,7 +59,8 @@ cd ..
 ```
 
 Data: put the match bundle in `$MTAH_DATA_DIR/tactical/`, keeping the names it arrives with. Then download the DFL
-open data into `$MTAH_DATA_DIR/external/idsse/`:
+open data (21 files, about 2.6 GB) into `$MTAH_DATA_DIR/external/idsse/`. Step 1 of the command checks the sha256 of
+every file:
 
 ```sh
 export MTAH_DATA_DIR=/path/to/data      # on Windows, e.g. export MTAH_DATA_DIR='C:\mtah-data'
@@ -78,7 +84,9 @@ Derived files go to `$MTAH_DATA_DIR/cache/` and `pablo_v6/out/`, never into a tr
 provided match print only aggregate figures. Threads are fixed at 4, and the same file comes out with 8.
 
 The network is not retrained by default, because retraining on another machine does not give bit-identical weights.
-Its stored weights (`dfl/pesos_red/`, trained only on the DFL) give the same CSV on Windows and Linux. `dfl/README.md`
+The command predicts with its stored weights instead (`dfl/pesos_red/`, trained only on the DFL; step 10 checks their
+sha256). Predicting with them is deterministic: with these weights, the previous version of the pipeline (the network
+without the home/away swap) gave the same CSV on Windows and on Linux. `dfl/README.md`
 explains how to retrain them.
 
 Checked in a clean copy (fresh clones, new environments, no cache) on 15/11/2026: same sha256.
