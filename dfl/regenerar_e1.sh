@@ -61,7 +61,7 @@ paso "9/11 entradas de la red temporal para BAR-ATH (sin etiquetas ni entrenamie
 cd "$RAIZ"
 
 paso "10/11 red temporal con sus pesos guardados (sha256 comprobado; sin reentrenar)"
-(cd dfl/pesos_red && sha256sum -c sha256.txt)
+(cd dfl/pesos_red && tr -d '\r' < sha256.txt | sha256sum -c -)
 "$PYT" -u dfl/tcn_train.py prod_pesos dfl/pesos_red
 
 cd "$RAIZ/pablo_v6"
